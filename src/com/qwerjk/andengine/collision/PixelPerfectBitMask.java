@@ -1,7 +1,5 @@
 package com.qwerjk.andengine.collision;
 
-import com.qwerjk.pixelperfecttest.Logger;
-
 import android.graphics.Bitmap;
 import android.util.Log;
 
