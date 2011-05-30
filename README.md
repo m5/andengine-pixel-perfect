@@ -9,7 +9,7 @@ Note: **this will only work for collisions between unrotated, unscaled sprites**
 Installation
 ============
 
-* Save [the jar file](./raw/master/pixel-perfect-collision.jar) to your project's `libs` directory.
+* Save [the jar file](https://github.com/m5/andengine-pixel-perfect/raw/master/pixel-perfect-collision.jar) to your project's `libs` directory.
 * If you are using eclipse, right-click on the jar, and click on `build path > Add To Build Path`
 * Done!
 
