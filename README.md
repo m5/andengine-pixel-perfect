@@ -9,7 +9,7 @@ Note: **this will only work for collisions between unrotated, unscaled sprites**
 Installation
 ============
 
-* Save [the jar file](./pixel-perfect-collisions.jar) to your project's `libs` directory.
+* Save [the jar file](./pixel-perfect-collision.jar) to your project's `libs` directory.
 * If you are using eclipse, right-click on the jar, and click on `build path > Add To Build Path`
 * Done!
 
@@ -45,10 +45,10 @@ public class Game extends BaseGameActivity{
         scene.getTopLayer().addEntity(diamond); 
 
         PixelPerfectSprite spinningTriangle = new PixelPerfectSprite(100,100,ppRegion);
-        spinningTriangle.animated(20, true)
+        spinningTriangle.animated(20, true);
         scene.getTopLayer().addEntity(spinningTriangle); 
 
-        spinningTriangle.collidesWith(diamond)
+        spinningTriangle.collidesWith(diamond);
     }
 } 
 ```
@@ -59,6 +59,6 @@ For a more complete example, check out (the demo)[./src/com/qwerjk/pixelperfectt
 Technical Notes
 ============
 
-The alpha channel of each sprite's bitmap is packed into a 1-bit-per-pixel int[][] mask. If the bounding boxes of the sprites intersect, logical shifts and &'s are used to test the intersection for a pixel-level collision.
+The alpha channel of each sprite's bitmap is packed into a 1-bit-per-pixel `int[][]` mask. If the bounding boxes of the sprites intersect, logical shifts and &'s are used to test the intersection for a pixel-level collision.
 
 The running time of the collision algorithm is proportional to the area of the intersection of the bounding boxes of the sprites being tested. 1000 collision checks against a 100x1000 intersection ran in 200ms on my HTC Incredible. At that rate, it shouldn't be any sort of bottleneck in your game. However, my benchmark was crude and my game required only a fraction of that speed, so YMMV.
