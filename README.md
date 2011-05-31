@@ -53,7 +53,7 @@ public class Game extends BaseGameActivity{
 } 
 ```
 
-For a more complete example, check out (the demo)[./src/com/qwerjk/pixelperfecttest/PixelPerfectTest.java].        
+For a more complete example, check out [the demo](https://github.com/m5/andengine-pixel-perfect/blob/master/src/com/qwerjk/pixelperfecttest/PixelPerfectTest.java)
 
 
 Technical Notes
