@@ -13,11 +13,13 @@ import org.anddev.andengine.entity.text.ChangeableText;
 import org.anddev.andengine.entity.util.FPSLogger;
 import org.anddev.andengine.extension.input.touch.controller.MultiTouch;
 import org.anddev.andengine.extension.input.touch.controller.MultiTouchController;
-import org.anddev.andengine.extension.input.touch.controller.MultiTouchException;
+import org.anddev.andengine.extension.input.touch.exception.MultiTouchException;
 import org.anddev.andengine.input.touch.TouchEvent;
 import org.anddev.andengine.opengl.font.Font;
 import org.anddev.andengine.opengl.texture.Texture;
 import org.anddev.andengine.opengl.texture.TextureOptions;
+import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.anddev.andengine.opengl.texture.region.TextureRegionFactory;
 import org.anddev.andengine.ui.activity.BaseGameActivity;
 
@@ -45,13 +47,13 @@ public class PixelPerfectTest extends BaseGameActivity {
     // ===========================================================
 
     private Camera mCamera;
-    private Texture triangleTexture;
-    private Texture diamondTexture;
+    private BitmapTextureAtlas triangleTexture;
+    private BitmapTextureAtlas diamondTexture;
     private PixelPerfectTiledTextureRegion triangleRegion;
     private PixelPerfectTextureRegion diamond100Region;
     private PixelPerfectTextureRegion diamond32Region;
     
-    private Texture mFontTexture;
+    private BitmapTextureAtlas mFontTexture;
     private Font mFont;
     private PixelPerfectTextureRegion starRegion;
 
@@ -88,18 +90,18 @@ public class PixelPerfectTest extends BaseGameActivity {
     @Override
     public void onLoadResources() {
         PixelPerfectTextureRegionFactory.setAssetBasePath("gfx/");
-        TextureRegionFactory.setAssetBasePath("gfx/");
+        BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
 
         
-        this.mFontTexture = new Texture(256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+        this.mFontTexture = new BitmapTextureAtlas(256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 
         this.mFont = new Font(this.mFontTexture, Typeface.create(Typeface.DEFAULT, Typeface.BOLD), 48, true, Color.BLACK);
 
         this.mEngine.getTextureManager().loadTexture(this.mFontTexture);
         this.mEngine.getFontManager().loadFont(this.mFont);
 
-        this.triangleTexture = new Texture(2048, 128, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-        this.diamondTexture = new Texture(1024, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+        this.triangleTexture = new BitmapTextureAtlas(2048, 128, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+        this.diamondTexture = new BitmapTextureAtlas(1024, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
         this.triangleRegion = PixelPerfectTextureRegionFactory.createTiledFromAsset(triangleTexture, this, "spinning-triangle.png", 0, 0, 20, 1);
         this.diamond100Region = PixelPerfectTextureRegionFactory.createFromAsset(diamondTexture, this, "diamond-100.png", 0, 0);
         this.diamond32Region = PixelPerfectTextureRegionFactory.createFromAsset(diamondTexture, this, "diamond-32.png", 102, 0);
@@ -130,7 +132,7 @@ public class PixelPerfectTest extends BaseGameActivity {
         Logger.f("1000 collisions in %d ms",System.currentTimeMillis() - t0);
         
         final ChangeableText collisionText = new ChangeableText(0, 0, this.mFont, "no collisions");
-        scene.getTopLayer().addEntity(collisionText);
+        scene.attachChild(collisionText);
         
         /* The actual collision-checking. */
         scene.registerUpdateHandler(new IUpdateHandler() {
@@ -179,7 +181,7 @@ public class PixelPerfectTest extends BaseGameActivity {
             }
         };
         sprite.animate(speed, true);
-        scene.getTopLayer().addEntity(sprite);
+        scene.attachChild(sprite);
         scene.registerTouchArea(sprite);
         return sprite;
     }
@@ -208,7 +210,7 @@ public class PixelPerfectTest extends BaseGameActivity {
                 return true;
             }
         };
-        scene.getTopLayer().addEntity(sprite);
+        scene.attachChild(sprite);
         scene.registerTouchArea(sprite);
         return sprite;
     }

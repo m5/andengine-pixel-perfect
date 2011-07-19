@@ -2,7 +2,7 @@ package com.qwerjk.andengine.opengl.texture.region;
 
 import org.anddev.andengine.opengl.texture.Texture;
 import org.anddev.andengine.opengl.texture.region.TextureRegion;
-import org.anddev.andengine.opengl.texture.source.ITextureSource;
+import org.anddev.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSource;
 
 import com.qwerjk.andengine.collision.PixelPerfectBitMask;
 
@@ -15,12 +15,12 @@ public class PixelPerfectTextureRegion  extends TextureRegion{
         return bitMask;
     }
     
-    public PixelPerfectTextureRegion(Texture pTexture, ITextureSource textureSource,
+    public PixelPerfectTextureRegion(Texture pTexture, IBitmapTextureAtlasSource textureSource,
                                      int pTexturePositionX, int pTexturePositionY, 
                                      int pWidth, int pHeight
                                      ) {
         super(pTexture, pTexturePositionX, pTexturePositionY, pWidth, pHeight);
-        Bitmap bmp = textureSource.onLoadBitmap();
+        Bitmap bmp = textureSource. onLoadBitmap(Bitmap.Config.ARGB_4444);
         this.bitMask = new PixelPerfectBitMask(bmp, pWidth, pHeight);
     }
 }
