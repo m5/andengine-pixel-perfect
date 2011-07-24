@@ -70,7 +70,7 @@ The running time of the collision algorithm is proportional to the area of the i
 Contributors
 ===========
 
- * alximik00 (Denis Polulyakh) - updated library to new version of AndEngine
+ * [alximik00 (Denis Polulyakh)](https://github.com/alximik00) - updated library to new version of AndEngine
 
 
 Contact
