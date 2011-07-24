@@ -13,6 +13,9 @@ Installation
 * If you are using eclipse, right-click on the jar, and click on `build path > Add To Build Path`
 * Done!
 
+Note: If you are using a version of AndEngine built before July 2011 (ie. you're using TextureRegions instead of BitmapTextureAliases), use [this jar](https://github.com/m5/andengine-pixel-perfect/raw/texture-regions/pixel-perfect-collision.jar) instead.
+
+
 
 Usage
 ============
