@@ -67,10 +67,15 @@ The alpha channel of each sprite's bitmap is packed into a 1-bit-per-pixel `int[
 The running time of the collision algorithm is proportional to the area of the intersection of the bounding boxes of the sprites being tested. 1000 collision checks against a 100x100 pixel intersection ran in 200ms on my HTC Incredible. At that rate, it shouldn't be any sort of bottleneck in your game. However, my benchmark was crude and my game required only a fraction of that speed, so YMMV.
 
 
+Contributors
+===========
+
+ * alximik00 (Denis Polulyakh) - updated library to new version of AndEngine
+
 
 Contact
 ============
 
-If you have any questions, or find any bugs, let me know.
+If you have any questions or find any bugs, let me know.
 
 micah.fivecoate@gmail.com
