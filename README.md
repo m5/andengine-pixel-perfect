@@ -26,16 +26,17 @@ Your code should look something like this:
  
 ```java
 public class Game extends BaseGameActivity{
-    private Texture texture;
+    private BitmapTextureAtlas texture;
     private PixelPerfectTextureRegion diamondRegion;
     private PixelPerfectTiledTextureRegion triangleRegion;
     ...
 
     public void onLoadResources(){
         PixelPerfectTextureRegionFactory.setAssetBasePath("gfx/");
+        BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/"); // if you're using non-pp bitmaps
         ...
       
-        texture = new Texture(256, 64, TextureOptions.NEAREST_PREMULTIPLYALPHA);
+        texture = new BitmapTextureAtlas(256, 64, TextureOptions.NEAREST_PREMULTIPLYALPHA);
         diamondRegion = PixelPerfectTextureRegionFactory.createFromAsset(texture, this, "diamond.png", 0,0);
         triangleRegion = PixelPerfectTextureRegionFactory.createTiledFromAsset(texture, this, "triangle.png", 65,0);
 
@@ -70,6 +71,7 @@ The running time of the collision algorithm is proportional to the area of the i
 Contributors
 ===========
 
+ * [Micah Fivecoate](http://qwerjk.com/) - Creator and Maintainer
  * [alximik00 (Denis Polulyakh)](https://github.com/alximik00) - updated library to new version of AndEngine
 
 
